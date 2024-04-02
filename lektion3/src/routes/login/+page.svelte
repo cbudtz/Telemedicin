@@ -8,7 +8,16 @@
 	let password = '';
 
 	const login = async () => {
-		if (username === 'admin' && password === 'admin') {
+		const response = await fetch('/api/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ username, password })
+		});
+		const result = await response.text();
+		console.log(result);
+		if (response.status === 200) {
 			window.location = '/admin';
 		} else {
 			alert('Forkert brugernavn eller password');
