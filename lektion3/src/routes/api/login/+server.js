@@ -1,7 +1,7 @@
 export async function POST({ request, cookies }) {
 	const body = await request.json();
 	const { username, password } = body;
-	if (username === 'admin' && password === 'admin') {
+	if (username === 'telemed24' && password === 'telemed24') {
 		cookies.set('session', 'admin', { httpOnly: true, path: '/' }); // cookies
 		return new Response('Logged in', { status: 200 });
 	} else {
