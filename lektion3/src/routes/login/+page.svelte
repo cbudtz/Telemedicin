@@ -16,7 +16,6 @@
 			body: JSON.stringify({ username, password })
 		});
 		const result = await response.text();
-		console.log(result);
 		if (response.status === 200) {
 			window.location = '/admin';
 		} else {
@@ -24,6 +23,10 @@
 		}
 	};
 </script>
+
+<Input bind:value={username} type="text" placeholder="Indtast Email" />
+<Input bind:value={password} type="password" placeholder="Indtast Password" />
+<Button color="primary" on:click={login}>Login</Button>
 
 <Container>
 	<Row>
