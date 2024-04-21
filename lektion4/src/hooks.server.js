@@ -4,7 +4,6 @@ export async function handle({ event, resolve }) {
 	const { request, cookies } = event;
 	const { pathname } = new URL(request.url);
 	console.log(pathname);
-	console.log(cookies.get('session'));
 	if (['/', '/api/login'].includes(pathname)) {
 		return await resolve(event);
 	} else {

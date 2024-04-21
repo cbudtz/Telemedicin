@@ -13,7 +13,7 @@ export async function POST({ request, cookies }) {
 	}
 	const match = bcrypt.compareSync(password, user.hashPass);
 	if (match) {
-		const token = jwt.sign({ useremail: username }, 'secret');
+		const token = jwt.sign({ id: user.id, email: user.email }, 'secret');
 		cookies.set('session', token, { httpOnly: true, path: '/' }); // cookies
 		return new Response('Logged in', { status: 200 });
 	} else {

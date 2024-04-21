@@ -17,7 +17,7 @@
 		});
 		const result = await response.text();
 		if (response.status === 200) {
-			window.location = '/admin';
+			window.location = '/dairy';
 		} else {
 			alert('Forkert brugernavn eller password');
 		}
