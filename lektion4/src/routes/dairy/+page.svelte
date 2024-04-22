@@ -8,7 +8,7 @@
 		dairy = await res.json();
 	});
 	const saveDiary = async () => {
-		fetch('api/dairy', {
+		await fetch('api/dairy', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

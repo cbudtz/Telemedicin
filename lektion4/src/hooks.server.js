@@ -7,11 +7,11 @@ export async function handle({ event, resolve }) {
 	if (['/', '/api/login'].includes(pathname)) {
 		return await resolve(event);
 	} else {
-		if (!cookies.get('session')) {
+		if (!cookies.get('token')) {
 			return new Response('Unauthorized', { status: 401 });
 		} else {
 			try {
-				const token = jwt.verify(cookies.get('session'), 'secret');
+				const token = jwt.verify(cookies.get('token'), env.);
 				event.request.user = token;
 			} catch (e) {
 				console.log(e);
