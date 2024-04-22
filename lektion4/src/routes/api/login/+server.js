@@ -8,7 +8,6 @@ export async function POST({ request, cookies }) {
 	const { username, password } = body;
 	const prisma = new PrismaClient({ log: ['query'] });
 	const user = await prisma.user.findFirst({ where: { email: username } });
-	console.log(user);
 	if (!user) {
 		return new Response('Unauthorized', { status: 401 });
 	}

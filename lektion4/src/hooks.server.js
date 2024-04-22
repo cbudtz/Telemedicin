@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { env } from '$env/dynamic/private';
 
 export async function handle({ event, resolve }) {
 	const { request, cookies } = event;
@@ -11,7 +12,7 @@ export async function handle({ event, resolve }) {
 			return new Response('Unauthorized', { status: 401 });
 		} else {
 			try {
-				const token = jwt.verify(cookies.get('token'), env.);
+				const token = jwt.verify(cookies.get('token'), env.JWT_SECRET);
 				event.request.user = token;
 			} catch (e) {
 				console.log(e);
